@@ -1,68 +1,41 @@
 <template>
   <el-scrollbar>
-    <el-menu :default-openeds="['1', '3']" class="menu">
+    <el-menu :default-openeds="['1', '2']" class="menu">
       <el-sub-menu index="1">
         <template #title>
-          <el-icon><message /></el-icon>Navigator One
+          <el-icon><message /></el-icon>Board
         </template>
         <el-menu-item-group>
-          <template #title>Group 1</template>
-          <el-menu-item index="1-1">Option 1</el-menu-item>
-          <el-menu-item index="1-2">Option 2</el-menu-item>
+          <template #title>Tickets</template>
+          <el-menu-item index="1-1">
+              <router-link to="/ticket">List View</router-link>
+          </el-menu-item>
         </el-menu-item-group>
-        <el-menu-item-group title="Group 2">
-          <el-menu-item index="1-3">Option 3</el-menu-item>
+        <el-menu-item-group title="Others">
+          <el-menu-item index="1-3" disabled>Not Implement</el-menu-item>
         </el-menu-item-group>
-        <el-sub-menu index="1-4">
-          <template #title>Option4</template>
-          <el-menu-item index="1-4-1">Option 4-1</el-menu-item>
-        </el-sub-menu>
       </el-sub-menu>
       <el-sub-menu index="2">
         <template #title>
-          <el-icon><icon-menu /></el-icon>Navigator Two
+          <el-icon><setting /></el-icon>Settings
         </template>
         <el-menu-item-group>
-          <template #title>Group 1</template>
-          <el-menu-item index="2-1">Option 1</el-menu-item>
-          <el-menu-item index="2-2">Option 2</el-menu-item>
+          <template #title>User Management</template>
+          <el-menu-item index="3-1">
+              <router-link to="/user">Users</router-link>
+          </el-menu-item>
         </el-menu-item-group>
-        <el-menu-item-group title="Group 2">
-          <el-menu-item index="2-3">Option 3</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="2-4">
-          <template #title>Option 4</template>
-          <el-menu-item index="2-4-1">Option 4-1</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-sub-menu index="3">
-        <template #title>
-          <el-icon><setting /></el-icon>Navigator Three
-        </template>
-        <el-menu-item-group>
-          <template #title>Group 1</template>
-          <el-menu-item index="3-1">Option 1</el-menu-item>
-          <el-menu-item index="3-2">Option 2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group 2">
-          <el-menu-item index="3-3">Option 3</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="3-4">
-          <template #title>Option 4</template>
-          <el-menu-item index="3-4-1">Option 4-1</el-menu-item>
-        </el-sub-menu>
       </el-sub-menu>
     </el-menu>
   </el-scrollbar>
 </template>
 
 <script>
-import { Message, Menu as IconMenu, Setting } from "@element-plus/icons-vue";
+import { Message, Setting } from "@element-plus/icons-vue";
 
 export default {
   components: {
     Message,
-    IconMenu,
     Setting,
   },
 };
