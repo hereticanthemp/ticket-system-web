@@ -1,14 +1,14 @@
 <template>
   <el-scrollbar>
-    <el-menu :default-openeds="['1', '2']" class="menu">
+    <el-menu :default-openeds="['1', '2']" class="menu" router>
       <el-sub-menu index="1">
         <template #title>
           <el-icon><message /></el-icon>Board
         </template>
         <el-menu-item-group>
           <template #title>Tickets</template>
-          <el-menu-item index="1-1">
-              <router-link to="/ticket">List View</router-link>
+          <el-menu-item index="/ticket">
+              List View
           </el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="Others">
@@ -21,8 +21,8 @@
         </template>
         <el-menu-item-group>
           <template #title>User Management</template>
-          <el-menu-item index="3-1">
-              <router-link to="/user">Users</router-link>
+          <el-menu-item index="/user">
+              Users
           </el-menu-item>
         </el-menu-item-group>
       </el-sub-menu>
