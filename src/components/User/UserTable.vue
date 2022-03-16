@@ -46,14 +46,17 @@
   <el-button class="mt-4" style="width: 100%" @click="onAddItem"
     >Add User</el-button
   >
-  <div>{{ users }}</div>
+  <div v-if="devMode">{{ users }}</div>
 </template>
 
 <script>
+import useDevMode from "../../mixins/useDevMode";
 export default {
   props: ["users"],
   emits: ["suspend-user", "reinstate-user", "add-user"],
   setup(_, context) {
+    const { devMode } = useDevMode();
+
     const onAddItem = () => {
       context.emit("add-user");
     };
@@ -93,6 +96,7 @@ export default {
       reinstateUser,
       formatStatus,
       formatRoles,
+      devMode
     };
   },
 };
