@@ -8,7 +8,7 @@
   >
     <add-form v-model="form"></add-form>
     <template #footer>
-      <div>{{ postData }}</div>
+      <div v-if="devMode">{{ postData }}</div>
       <span class="dialog-footer">
         <el-button
           @click="
@@ -29,10 +29,12 @@
 import AddForm from "./AddUserDialogForm.vue";
 import { UserApi as api } from "../../api";
 import { reactive, computed } from "vue";
+import useDevMode from "../../mixins/useDevMode";
 export default {
   props: ["modelValue"],
   components: { AddForm },
   setup(props, context) {
+    const { devMode } = useDevMode();
     const dialogOpen = computed({
       get: () => props.modelValue,
       set: (val) => {
@@ -71,6 +73,7 @@ export default {
     };
 
     return {
+      devMode,
       form,
       dialogOpen,
       postData,

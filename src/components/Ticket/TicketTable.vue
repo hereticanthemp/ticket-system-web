@@ -1,12 +1,15 @@
 <template>
-  <el-table
-    :data="tickets"
-    style="width: 100%"
-  >
+  <el-table :data="tickets" style="width: 100%">
     <el-table-column prop="id" label="No" width="150" />
+    <el-table-column prop="type" label="Type">
+      <template #default="scope">
+        <el-tag>{{scope.row.type ===1?"Bug":"Feature Request"}}</el-tag>
+      </template>
+    </el-table-column>
     <el-table-column prop="summary" label="Summary" width="120" />
-    <el-table-column prop="description" label="Description"/>
-
+    <el-table-column prop="description" label="Description" />
+    <el-table-column prop="severity" label="Severity" />
+    <el-table-column prop="priority" label="Priority" />
 
     <el-table-column label="Operations">
       <template #default="scope">
@@ -29,9 +32,6 @@
       </template>
     </el-table-column>
   </el-table>
-  <el-button class="mt-4" style="width: 100%" @click="onAddItem"
-    >Add Ticket</el-button
-  >
   <div v-if="devMode">{{ tickets }}</div>
 </template>
 
@@ -40,17 +40,10 @@ import useDevMode from "../../mixins/useDevMode";
 export default {
   props: ["tickets"],
   emits: ["suspend-user", "reinstate-user", "add-user"],
-  setup(_, context) {
+  setup() {
     const { devMode } = useDevMode();
-
-    const onAddItem = () => {
-      context.emit("add-user");
-    };
-
     return {
-      onAddItem,
-
-      devMode
+      devMode,
     };
   },
 };

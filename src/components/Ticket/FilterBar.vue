@@ -8,14 +8,14 @@
     </el-form-item>
     <el-form-item>
       <el-date-picker
-        v-model="formInline.startDate"
+        v-model="formInline.startTime"
         type="datetime"
         placeholder="From"
       />
     </el-form-item>
     <el-form-item>
       <el-date-picker
-        v-model="formInline.endDate"
+        v-model="formInline.endTime"
         type="datetime"
         placeholder="To"
       />
@@ -37,8 +37,8 @@ export default {
     const formInline = reactive({
       includeDeleted: false,
       includeResolved: false,
-      startDate: "",
-      endDate: "",
+      startTime: null,
+      endTime: null,
     });
 
     const onSubmit = () => {
