@@ -8,8 +8,8 @@
     </el-form-item>
     <el-form-item label="Type">
       <el-select v-model="form.type" placeholder="please select type">
-        <el-option label="Bug" value="1"></el-option>
-        <el-option label="Feature Request" value="2"></el-option>
+        <el-option label="Bug" :value="1"></el-option>
+        <el-option label="Feature Request" :value="2"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item>
@@ -32,6 +32,9 @@
         show-stops
       />
     </el-form-item>
+    <el-form-item>
+      <el-button @click="submit">Submit</el-button>
+    </el-form-item>
   </el-form>
   <div v-if="devMode">{{ form }}</div>
 </template>
@@ -39,6 +42,7 @@
 <script>
 import { reactive } from "vue";
 import useDevMode from "../../mixins/useDevMode";
+import { TicketApi as api } from "../../api";
 export default {
   props: ["modelValue"],
   setup() {
@@ -46,12 +50,14 @@ export default {
     const form = reactive({
       summary: "",
       description: "",
-      type: "",
+      type: 0,
       severity: 1,
       priority: 1,
     });
-
-    return { form, devMode };
+    const submit = () => {
+      api.addTicket(form);
+    };
+    return { form, submit, devMode };
   },
 };
 </script>

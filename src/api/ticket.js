@@ -9,4 +9,7 @@ export default {
   getTickets: (param) => {
     return axiosInstance.post("/GetTickets", param ?? {});
   },
+  addTicket: (ticket) => {
+    return axiosInstance.post("/CreateTicket", ticket);
+  },
 };
